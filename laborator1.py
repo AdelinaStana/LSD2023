@@ -28,6 +28,15 @@ def ultima_cifra(c):
 def compus(o,h,c):
     return 16*o+h+12*c
 
+def ecuatie_gr2(a, b, c):
+    delta = b ** 2 - 4 * a * c
+    if delta < 0:
+        print("Nu exista solutii reale.")
+    elif delta == 0:
+        print(-b / (2 * a))
+    else:
+        print((-b - math.sqrt(delta)) / (2 * a), " si ", (-b + math.sqrt(delta)) / (2 * a))
+
 if __name__ == '__main__':
     """ afisare """
     print("LSD 2023")
@@ -80,5 +89,14 @@ if __name__ == '__main__':
     a substanței corespunzătoare, cunoscând faptul că oxigenul are masa atomică 16, hidrogenul 1, iar carbonul 12.
     """
     print(compus(1,1,1))
+
+    """
+    Exercițiul 3: Ecuația de gradul 2
+    Scrieți o funcție în Python care primește ca parametri trei întregi a, b, respectiv c, și tipărește soluțiile ecuației 
+    de gradul doi ax2 + bx + c = 0, sau un mesaj daca nu există soluții reale.
+    """
+
+    ecuatie_gr2(1, -13, 30)
+    
 
     """TEMA EX: 4, 5, 6, 7, 9 """
