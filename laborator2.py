@@ -140,6 +140,6 @@ sau "argumentele 1 și 2 (resp. 2 și 3, sau 1 și 3) sunt egale". Evitați pe c
 pentru porțiuni de cod similare, creați (și apelați) o funcție care conține partea comună și are ca 
 parametri valorile care diferă.
 """
-
+# TODO: exercitiu
 
 # TODO: TEMA EX 3, 4
