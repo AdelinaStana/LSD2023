@@ -63,6 +63,13 @@ Exercitiu: Scrieti o functie recursiva care afiseaza numerele de la n la 1 in or
 
 # TODO: rezolvare exercitiu
 
+def afisare_n_1(n):
+    if n >= 1:
+        print(n, end=",")
+        afisare_n_1(n - 1)
+
+
+afisare_n_1(7)
 
 """
 Exercitiu: Scrieti o functie recursiva care afiseaza numerele de la 1 la n in ordine crescatoare.
@@ -70,6 +77,13 @@ Exercitiu: Scrieti o functie recursiva care afiseaza numerele de la 1 la n in or
 
 # TODO: rezolvare exercitiu
 
+def afisare_1_n(n):
+    if n >= 1:
+        afisare_1_n(n - 1)
+        print(n, end=",")
+
+print()
+afisare_1_n(7)
 
 
 """
@@ -81,7 +95,14 @@ Funcția va primi ca unic parametru numărul natural n.
 """
 # TODO: rezolvare exercitiu
 
+def pa(n):
+    if n == 0:
+        return 2
+    else:
+        return 2*pa(n-1)-3
 
+print()
+print(f"pa(3)={pa(2)}")
 
 """
 Exercițiul 4: Cifrele unui număr
@@ -91,6 +112,13 @@ a) Implementați în Python o funcție recursivă pentru a calcula produsul cifr
 # TODO: rezolvare exercitiu
 
 
+def prod_cifre(n):
+    if n < 10:
+        return n
+    else:
+        return n%10*prod_cifre(n//10)   # // impartire fara rest
+
+print(f"prod_cifre(1234)={prod_cifre(123)}")
 
 """
 Exercițiul 6: Număr prim
@@ -99,6 +127,27 @@ Implementați în Python o funcție care returneaza True dacă un număr  n este
 
 # TODO: rezolvare exercitiu
 
+
+def aux(n, i):
+    if i <= n / 2:
+        if n % i == 0:
+            return False
+        else:
+            return aux(n, i + 1)
+    else:
+        return True
+
+
+def prim(n):
+    if n == 1:
+        return False
+    else:
+        return aux(n,2)
+
+
+print(prim(13))
+print(prim(14))
+print(prim(7))
 
 # TODO: TEMA Exercițiul 4: b,c,d
 # TODO: Exercițiul 5
