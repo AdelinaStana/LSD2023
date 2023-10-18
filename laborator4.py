@@ -106,6 +106,14 @@ Exercitiu: Calculati si afisati suma elementelor unei liste de intregi.
 
 # TODO: exercitiu
 
+def suma_lista(lista):
+    if len(lista) > 0:
+        return lista[0] + suma_lista(lista[1:])
+    else:
+        return 0
+
+
+print(f"Suma elementelor listei {lista_intregi} este {suma_lista(lista_intregi)}")
 
 """
 
@@ -129,7 +137,6 @@ def suma_lista_reduce(lista):
 
 print(f"(reduce) Suma elementelor listei {lista_intregi} este {suma_lista_reduce(lista_intregi)}")
 
-
 """
 Putem folosi si modulul operator, invatat in laboratorul 2.
 """
@@ -143,7 +150,6 @@ def suma_lista_reduce_op(lista):
 
 
 print(f"(reduce+op) Suma elementelor listei {lista_intregi} este {suma_lista_reduce_op(lista_intregi)}")
-
 
 """
 Funcția filter()
@@ -181,6 +187,11 @@ toate elementele listei.
 
 # TODO: exercitiu
 
+def putere(lista):
+    return list(map(lambda x: x * x, lista))
+
+
+print(f"Elementele listei {lista_intregi} la puterea a 2-a sunt {putere(lista_intregi)}")
 
 """
 Lista cifrelor unui numar.
@@ -214,5 +225,19 @@ print(f"Lista cifrelor numarului 1235 este {descompunere2(1235)}")
 
 # TODO: exercitiu
 
+def cifre_cond(nr): #cifre pare
+    if nr <= 9:
+        if nr % 2 == 0:
+            return [nr]
+        else:
+            return []
+
+    else:
+        if nr % 2 == 0 :
+            return cifre_cond(nr//10) + [nr%10]
+        else:
+            return cifre_cond(nr//10)
+
+print(f"lista cifrelor pare ale nr 1234567 este {cifre_cond(12345678)}")
 
 # TODO: tema din Partea a II-a: ex 1. b,c; ex 2; ex 5; ex 6
