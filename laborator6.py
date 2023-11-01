@@ -96,7 +96,7 @@ Parcurgerea multimilor cu ajutorul functiei reduce()
 
 
 def afisare_multime(mul):
-    functools.reduce(lambda acc, el: print(el), mul, None)
+    functools.reduce(lambda acc, el: print(el, end=" "), mul, None)
 
 
 afisare_multime({1, 2, 3, 4, 5})
@@ -105,16 +105,29 @@ afisare_multime({1, 2, 3, 4, 5})
 Suma elementelor unei multimi
 """
 
-# TODO: exercitiu impreuna
+
+def suma(multime):
+    return functools.reduce(lambda suma, el: suma + el, multime, 0)
+
+
+print(f"\nsuma = {suma({2, 3, 4})}")
 
 """
-1. Scrieți o funcție care ia ca parametru o mulțime și o tipărește pe o linie, între acolade { } și cu virgulă între elemente. 
+1. Scrieți o funcție care ia ca parametru o mulțime și o tipărește pe o linie, între acolade { } și cu spatiu între elemente. 
 
 Input: {1,2,3}; Output: {1,2,3}
 """
+import sys
 
-# TODO: exercitiu
 
+def afisare_multime_format(mul):
+    print("{", end="")
+    functools.reduce(lambda acc, el: print(el, end=" "), mul, None)
+    sys.stdout.write('\b')
+    print("}")
+
+
+afisare_multime_format({1, 2, 3, 4, 5})
 
 """
 2. Scrieți o funcție care ia o listă de perechi (de tip precizat) și returnează mulțimea elementelor de pe prima poziție din 
@@ -123,7 +136,23 @@ fiecare pereche (variante: a doua poziție; ambele poziții, dacă sunt de acela
 Input: [(1,2), (3,4)]; Output: {1,3}
 """
 
-# TODO: exercitiu
+
+def prime(lista):
+    return functools.reduce(lambda multime, pereche: multime | {pereche[0]}, lista, set())
+
+
+print(prime([(1, 2), (3, 4), (7, 9)]))
+
+
+def prime_rec(lista):
+    if len(lista) == 0:
+        return set()
+    else:
+        a, b = lista[0]
+        return {a} | prime_rec(lista[1:])
+
+
+print(prime_rec([(1, 2), (3, 4), (7, 9)]))
 
 """
 3. Implementați funcția standard filter care ia ca parametri o funcție booleană f și o mulțime s și returnează mulțimea
@@ -132,6 +161,27 @@ elementelor din s care satisfac funcția f.
 Input: lambda x: x % 2 == 0, {1, 2, 3, 4}; Output: {2, 4}
 """
 
-# TODO: exercitiu
 
-# TODO: TEMA EX 4,5,6
+def filter(f, multime):
+    return functools.reduce(lambda multime_noua, element: multime_noua | {element} if f(element) else multime_noua,
+                            multime, set())
+
+
+print(filter(lambda x: x % 2 == 0, {1, 2, 3, 4, 5, 6}))
+
+"""
+4. Implementați funcția standard partition care ia ca parametri o funcție booleană f și o mulțime s și 
+returnează o pereche de mulțimi, cu elementele din s care satisfac, respectiv nu satisfac funcția f.
+
+Input: lambda x: x % 2 == 0, {1, 2, 3, 4}; Output: ({2, 4}, {1, 3})
+"""
+
+
+def partition(f, multime):
+    respecta = functools.reduce(lambda multime_noua, element: multime_noua | {element} if f(element) else multime_noua,
+                                multime, set())
+    nu_respecta = multime - respecta
+    return respecta, nu_respecta
+
+
+print(partition(lambda x: x % 2 == 0, {1, 2, 3, 4, 5, 6}))
