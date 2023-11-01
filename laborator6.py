@@ -169,19 +169,4 @@ def filter(f, multime):
 
 print(filter(lambda x: x % 2 == 0, {1, 2, 3, 4, 5, 6}))
 
-"""
-4. Implementați funcția standard partition care ia ca parametri o funcție booleană f și o mulțime s și 
-returnează o pereche de mulțimi, cu elementele din s care satisfac, respectiv nu satisfac funcția f.
-
-Input: lambda x: x % 2 == 0, {1, 2, 3, 4}; Output: ({2, 4}, {1, 3})
-"""
-
-
-def partition(f, multime):
-    respecta = functools.reduce(lambda multime_noua, element: multime_noua | {element} if f(element) else multime_noua,
-                                multime, set())
-    nu_respecta = multime - respecta
-    return respecta, nu_respecta
-
-
-print(partition(lambda x: x % 2 == 0, {1, 2, 3, 4, 5, 6}))
+# TODO: TEMA EX 4,5,6
