@@ -133,3 +133,5 @@ Input: lambda x: x % 2 == 0, {1, 2, 3, 4}; Output: {2, 4}
 """
 
 # TODO: exercitiu
+
+# TODO: TEMA EX 4,5,6
