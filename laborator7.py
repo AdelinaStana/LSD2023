@@ -99,7 +99,20 @@ fiecare șir e asociat cu suma tuturor valorilor cu care e asociat în listă.
 Input: [('a', 7), ('b', 5), ('c', 2), ('a', 3), ('b', 3)]; Output: {'a': 10, 'b': 8, 'c': 2}
 """
 
-# TODO: clasa
+def adauga_in_dictionar(dictionar_nou, pereche):
+    cheie, valoare = pereche
+    if cheie in dictionar_nou.keys():
+        dictionar_nou[cheie] += valoare
+    else:
+        dictionar_nou[cheie] = valoare
+
+    return dictionar_nou
+
+
+def dict_perechi(lista_perechi):
+    return functools.reduce(lambda acc, pereche: adauga_in_dictionar(acc, pereche), lista_perechi, dict())
+
+print(dict_perechi([('a', 7), ('b', 5), ('c', 2), ('a', 3), ('b', 3)]))
 
 """
 2. Scrieți o funcție care ia o listă de șiruri de caractere și creează un dicționar în care fiecare șir e asociat cu 
