@@ -124,6 +124,15 @@ Input: ["aaa", "bbb", "aabbb"]; Output: {'a': 5, 'b': 6}
 # TODO: exercitiu
 
 
+def adauga_in_dictionar(dictionar_nou, caracter):
+    if caracter in dictionar_nou.keys():
+        dictionar_nou[caracter] += 1
+    else:
+        dictionar_nou[caracter] = 1
+
+    return dictionar_nou
+
+
 """
 3. Implementați cu ajutorul lui reduce funcția filter care creează un nou dicționar doar cu perechile din dicționarul 
 dat care satisfac o funcție dată.
