@@ -90,3 +90,15 @@ respecta conditia data.
 
 
 # TODO: TEMA ex 1, 2, 4
+
+"""
+
+1. Scrieți o funcție care ia un arbore binar și returnează lista nodurilor care au un singur fiu. Ordinea nodurilor în 
+listă va fi cea din traversarea în inordine.
+
+2. Scrieți o funcție careia un arbore binar și returnează numărul total de noduri din arbore.
+
+4. Tipărire indentată Scrieți o funcție care afișează un arbore binar de întregi în preordine, câte un nod pe linie, 
+precedând valoarea din nod cu un număr de spații egal cu dublul adâncimii la care se află 
+(câte două spații pentru fiecare nivel).
+"""
