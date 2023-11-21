@@ -43,6 +43,28 @@ afisare_inordine(radacina)  # ce se intampla daca print(f"Afisare inordine: {afi
 #TODO: Afisare preordine si postordine
 
 
+def afisare_preordine(arbore):
+    if arbore is not None:
+        print(arbore[cheie], end=", ")
+        afisare_preordine(arbore[stanga])
+        afisare_preordine(arbore[dreapta])
+
+
+print("Afisare preordine: ", end=" ")
+afisare_preordine(radacina)
+
+
+def afisare_postordine(arbore):
+    if arbore is not None:
+        afisare_postordine(arbore[stanga])
+        afisare_postordine(arbore[dreapta])
+        print(arbore[cheie], end=", ")
+
+
+print("Afisare postordine: ", end=" ")
+afisare_postordine(radacina)
+
+
 """
 Calculare inaltime arbore binar.
 """
@@ -52,7 +74,6 @@ def inaltime(arbore):
         return 1 + max(inaltime(arbore[stanga]), inaltime(arbore[dreapta]))
     else:
         return 0
-
 
 print("\ninaltime arbore : ", end="")
 print(inaltime(radacina))
@@ -82,11 +103,36 @@ Scrieti o functie care primeste ca parametru un arbore si construieste lista tut
 # TODO: exercitiu
 
 
+def frunze(arbore):
+    if arbore is not None:
+        if arbore[stanga] is None and arbore[dreapta] is None:
+            return [arbore[cheie]]
+        else:
+            return frunze(arbore[stanga]) + frunze(arbore[dreapta])
+    else:
+        return []
+
+
+print(f"\nFrunze: {frunze(radacina)}")
+
 """
 Scrieti o functie care primeste ca parametru un arbore si o functie conditie si returneaza multimea tuturor nodurilor care
 respecta conditia data.
 """
 # TODO: exercitiu
+
+
+def arbore_conditie(arbore, functie):
+    if arbore is not None:
+        if functie(arbore[cheie]):
+            return {arbore[cheie]} | arbore_conditie(arbore[stanga], functie) | arbore_conditie(arbore[dreapta], functie)
+        else:
+            return arbore_conditie(arbore[stanga], functie) | arbore_conditie(arbore[dreapta], functie)
+    else:
+        return set()
+
+
+print(f"Conditie: {arbore_conditie(radacina, lambda x: x % 2 == 0)}")
 
 
 # TODO: TEMA ex 1, 2, 4
